@@ -39,3 +39,5 @@ FetchContent_Declare(glm
 )
 
 FetchContent_MakeAvailable(glfw volk vk-bootstrap VulkanMemoryAllocator glm)
+
+add_subdirectory(src)
