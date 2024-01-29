@@ -12,32 +12,39 @@ option(ENABLE_LTO "Enable to add Link Time Optimization." ON)
 set(EXECUTABLE_NAME "main")
 
 include(FetchContent)
+
+option(GLFW_BUILD_TESTS "" OFF)
+option(GLFW_BUILD_DOCS "" OFF)
+option(GLFW_INSTALL "" OFF)
+option(GLFW_BUILD_EXAMPLES "" OFF)
+
 FetchContent_Declare(glfw
     GIT_REPOSITORY https://github.com/glfw/glfw.git
     GIT_TAG 3.3.9
-    GIT_SHALLOW TRUE
 )
 FetchContent_Declare(volk
     GIT_REPOSITORY https://github.com/zeux/volk.git
     GIT_TAG vulkan-sdk-1.3.275.0
-    GIT_SHALLOW TRUE
 )
 FetchContent_Declare(vk-bootstrap
     GIT_REPOSITORY https://github.com/charles-lunarg/vk-bootstrap.git
     GIT_TAG v1.3.275
-    GIT_SHALLOW TRUE
 )
 FetchContent_Declare(VulkanMemoryAllocator
     GIT_REPOSITORY https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator.git
     GIT_TAG v3.0.1
-    GIT_SHALLOW TRUE
 )
 FetchContent_Declare(glm
     GIT_REPOSITORY https://github.com/g-truc/glm.git
     GIT_TAG 1.0.0
-    GIT_SHALLOW TRUE
 )
 
 FetchContent_MakeAvailable(glfw volk vk-bootstrap VulkanMemoryAllocator glm)
+
+target_include_directories(glfw PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
+target_include_directories(volk PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
+target_include_directories(vk-bootstrap PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src")
+target_include_directories(VulkanMemoryAllocator PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src/include")
+target_include_directories(glm PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
 
 add_subdirectory(src)
