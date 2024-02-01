@@ -1,17 +1,16 @@
 #include <iostream>
- 
-#include <volk.h>
-#include <VkBootstrap.h>
+#include <exception>
+#include <vector>
 
-#define REQUIRED_VK_VERSION VK_MAKE_API_VERSION(0, 1, 2, 0)
-#define VK_FAILED(vkResult) (vkResult < 0)
+#include "GraphicsInstance.hpp"
 
 int main(void) {
-    if (VK_FAILED(volkInitialize()))
-        return -1;
+    auto graphicsInstance = GraphicsInstance::CreateGraphicsInstance();
 
-    if (volkGetInstanceVersion() < REQUIRED_VK_VERSION)
-        return -1;
+    auto graphicsDevice = graphicsInstance->CreateGraphicsDevice(graphicsInstance->_graphicsAdapter);
+
+    delete graphicsDevice;
+    delete graphicsInstance;
 
     return 0;
 }

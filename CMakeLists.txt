@@ -41,10 +41,6 @@ FetchContent_Declare(glm
 
 FetchContent_MakeAvailable(glfw volk vk-bootstrap VulkanMemoryAllocator glm)
 
-target_include_directories(glfw PUBLIC "${CMAKE_CURRENT_LIST_DIR}/include")
-target_include_directories(volk PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
-target_include_directories(vk-bootstrap PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src")
-target_include_directories(VulkanMemoryAllocator PUBLIC "${CMAKE_CURRENT_LIST_DIR}/src/include")
-target_include_directories(glm PUBLIC "${CMAKE_CURRENT_LIST_DIR}")
+add_library(glfw::glfw ALIAS glfw)
 
 add_subdirectory(src)
