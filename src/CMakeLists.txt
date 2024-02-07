@@ -1,6 +1,16 @@
-file(GLOB APP_SOURCES CONFIGURE_DEPENDS *.cpp *.hpp *.h)
-
-add_executable(${EXECUTABLE_NAME} ${APP_SOURCES})
+add_executable(${EXECUTABLE_NAME}
+    main.cpp
+    Graphics/GraphicsAdapterBase.hpp
+    Graphics/GraphicsDeviceBase.hpp
+    Graphics/GraphicsInstanceBase.hpp
+    Graphics/Vulkan/HelpersVK.hpp
+    Graphics/Vulkan/GraphicsAdapterVK.hpp
+    Graphics/Vulkan/GraphicsAdapterVK.cpp
+    Graphics/Vulkan/GraphicsDeviceVK.hpp
+    Graphics/Vulkan/GraphicsDeviceVK.cpp
+    Graphics/Vulkan/GraphicsInstanceVK.hpp
+    Graphics/Vulkan/GraphicsInstanceVK.cpp
+)
 
 target_link_libraries(
     ${EXECUTABLE_NAME}
