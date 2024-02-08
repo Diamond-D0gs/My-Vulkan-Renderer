@@ -10,6 +10,7 @@ add_executable(${EXECUTABLE_NAME}
     Graphics/GraphicsAdapter.hpp
     Graphics/GraphicsDevice.hpp
     Graphics/GraphicsInstance.hpp
+    Graphics/GraphicsInstance.cpp
 )
 
 target_link_libraries(

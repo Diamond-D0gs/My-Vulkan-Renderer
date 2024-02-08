@@ -15,7 +15,7 @@ namespace Oak::Graphics::VK {
 
 		Device() = default;
 
-		static Device* Create(const vkb::Instance& vkInstance, const Adapter* const graphicsAdapter);
+		static Device* Create(const Adapter* const graphicsAdapter);
 
 	public:
 		~Device() { vkDestroyDevice(_vkDevice, nullptr); }

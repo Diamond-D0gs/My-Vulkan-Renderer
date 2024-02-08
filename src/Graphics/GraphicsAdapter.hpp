@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Vulkan/GraphicsAdapterVK.hpp"
+#include <string>
+#include <cstdint>
 
 namespace Oak::Graphics {
     class Instance;

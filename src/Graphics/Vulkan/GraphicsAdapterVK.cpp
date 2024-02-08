@@ -92,7 +92,7 @@ namespace Oak::Graphics::VK {
 	}
 
 	VkPhysicalDeviceFeatures2 Adapter::CreateExtensionNamesAndFeatureStructs(std::vector<const char*>& extensionNamesOut, std::vector<std::unique_ptr<VkBaseOutStructure>> featureStructsOut) const {
-		VkPhysicalDeviceVulkan12Features* vulkan12Features = new VkPhysicalDeviceVulkan12Features();
+		/*VkPhysicalDeviceVulkan12Features* vulkan12Features = new VkPhysicalDeviceVulkan12Features();
 		vulkan12Features->sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_VULKAN_1_2_FEATURES;
 		vulkan12Features->drawIndirectCount = true;
 		vulkan12Features->storageBuffer8BitAccess = true;
@@ -162,7 +162,9 @@ namespace Oak::Graphics::VK {
 			featureStructsOut.push_back(std::make_unique<VkBaseOutStructure>(rayTracingFeatures));
 		}
 
-		return physicalDeviceFeatures;
+		return physicalDeviceFeatures;*/
+
+		return VkPhysicalDeviceFeatures2();
 	}
 
 	PhysicalDeviceFeatureStructs GetPhysicalDeviceFeatures(const VkPhysicalDevice vkPhysicalDevice) {

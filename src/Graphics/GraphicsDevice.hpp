@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Vulkan/GraphicsDeviceVK.hpp"
-
 namespace Oak::Graphics {
     class Instance;
     

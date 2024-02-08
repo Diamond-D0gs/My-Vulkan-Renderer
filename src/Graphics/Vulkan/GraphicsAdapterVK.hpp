@@ -6,6 +6,7 @@
 #include <VkBootstrap.h>
 
 #include <vector>
+#include <memory>
 
 namespace Oak::Graphics::VK {
 	class Instance;

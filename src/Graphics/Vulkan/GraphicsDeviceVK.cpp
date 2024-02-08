@@ -1,7 +1,7 @@
 #include "GraphicsDeviceVK.hpp"
 
 namespace Oak::Graphics::VK {
-	Device* Device::Create(const vkb::Instance& vkInstance, const Adapter* const graphicsAdapter) {
+	Device* Device::Create(const Adapter* const graphicsAdapter) {
 		const float queuePriority = 1.0f;
 
 		VkPhysicalDeviceMeshShaderFeaturesEXT meshShadingFeatures = {

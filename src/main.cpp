@@ -5,9 +5,9 @@
 #include "Graphics/GraphicsInstance.hpp"
 
 int main(void) {
-    auto graphicsInstance = GraphicsInstance::CreateGraphicsInstance();
+    auto graphicsInstance = Oak::Graphics::Instance::CreateGraphicsInstance();
 
-    auto graphicsDevice = graphicsInstance->CreateGraphicsDevice(graphicsInstance->_graphicsAdapter);
+    auto graphicsDevice = graphicsInstance->CreateGraphicsDevice(graphicsInstance->_adapter);
 
     delete graphicsDevice;
     delete graphicsInstance;

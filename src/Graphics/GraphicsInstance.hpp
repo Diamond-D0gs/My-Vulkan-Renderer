@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Vulkan/GraphicsInstanceVK.hpp"
 #include "GraphicsAdapter.hpp"
 #include "GraphicsDevice.hpp"
 
@@ -10,10 +9,12 @@ namespace Oak::Graphics {
         Instance() = default;
 
     public:
+        Adapter* _adapter;
+
         virtual ~Instance() = default;
 
         static const Instance* CreateGraphicsInstance();
         
-        virtual const Device* CreateGraphicsDevice(const Adapter* const graphicsAdapter) const;
+        virtual const Device* CreateGraphicsDevice(const Adapter* const graphicsAdapter) const = 0;
     };
 }
