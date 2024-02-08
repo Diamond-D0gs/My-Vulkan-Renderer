@@ -1,8 +1,11 @@
 add_executable(${EXECUTABLE_NAME}
     main.cpp
-    Graphics/GraphicsAdapterBase.hpp
-    Graphics/GraphicsDeviceBase.hpp
-    Graphics/GraphicsInstanceBase.hpp
+    Graphics/GraphicsAdapter.hpp
+    Graphics/GraphicsDevice.hpp
+    Graphics/GraphicsInstance.hpp
+    Graphics/Base/GraphicsAdapterBase.hpp
+    Graphics/Base/GraphicsDeviceBase.hpp
+    Graphics/Base/GraphicsInstanceBase.hpp
     Graphics/Vulkan/HelpersVK.hpp
     Graphics/Vulkan/GraphicsAdapterVK.hpp
     Graphics/Vulkan/GraphicsAdapterVK.cpp

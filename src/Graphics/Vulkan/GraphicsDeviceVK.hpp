@@ -1,21 +1,23 @@
 #pragma once
 
-#include "GraphicsAdapter.hpp"
+#include "../Base/GraphicsDeviceBase.hpp"
+#include "GraphicsAdapterVK.hpp"
 
 #include <volk.h>
 #include <VkBootstrap.h>
 
-class GraphicsInstance;
+class GraphicsInstanceVK;
 
-class GraphicsDevice {
-private:
-	const VkDevice _vkDevice;
+class GraphicsDeviceVK : public GraphicsDeviceBase {
+protected:
+	VkDevice _vkDevice;
 
-	GraphicsDevice(VkDevice vkDevice)
-		: _vkDevice(vkDevice) {}
+	GraphicsDeviceVK() = default;
 
-	static GraphicsDevice* Create(const vkb::Instance& vkInstance, const GraphicsAdapter const* graphicsAdapter);
+	static GraphicsDeviceVK* Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK const* graphicsAdapter);
 
 public:
-	friend GraphicsInstance;
+	~GraphicsDeviceVK() { vkDestroyDevice(_vkDevice, nullptr); }
+
+	friend GraphicsInstanceVK;
 };

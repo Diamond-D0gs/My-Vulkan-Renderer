@@ -1,9 +1,9 @@
-#include "GraphicsInstance.hpp"
-#include "VkHelpers.hpp"
+#include "GraphicsInstanceVK.hpp"
+#include "HelpersVK.hpp"
 
 #include <exception>
 
-const GraphicsInstance* GraphicsInstance::CreateGraphicsInstance() {
+const GraphicsInstanceVK* GraphicsInstanceVK::CreateGraphicsInstance() {
     if (VK_FAILED(volkInitialize()))
         throw std::runtime_error("Failed to initialize volk.");
 
@@ -23,5 +23,9 @@ const GraphicsInstance* GraphicsInstance::CreateGraphicsInstance() {
 
     volkLoadInstance(vkInstance);
 
-    return new GraphicsInstance(vkInstance, GraphicsAdapter::Create(vkInstance));
+    GraphicsInstanceVK* graphicsInstance = new GraphicsInstanceVK();
+    graphicsInstance->_graphicsAdapter = static_cast<GraphicsAdapter*>(GraphicsAdapterVK::Create(vkInstance));
+    graphicsInstance->_vkInstance = std::move(vkInstance);
+
+    return graphicsInstance;
 }
