@@ -1,6 +1,6 @@
 #include "GraphicsDeviceVK.hpp"
 
-GraphicsDeviceVK* GraphicsDeviceVK::Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK const* graphicsAdapter) {
+GraphicsDeviceVK* GraphicsDeviceVK::Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK* const graphicsAdapter) {
 	const float queuePriority = 1.0f;
 
 	VkPhysicalDeviceMeshShaderFeaturesEXT meshShadingFeatures = {

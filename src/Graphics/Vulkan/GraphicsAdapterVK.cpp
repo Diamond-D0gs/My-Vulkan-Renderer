@@ -93,7 +93,7 @@ void CheckRequiredFeatures(const vkb::PhysicalDevice& vkPhysicalDevice, const Ph
 		throw std::runtime_error("Vulkan physical device does not support adequate sampled image descriptors bound.");
 }
 
-const GraphicsAdapterVK* GraphicsAdapterVK::Create(const vkb::Instance& vkInstance) {
+GraphicsAdapterVK* GraphicsAdapterVK::Create(const vkb::Instance& vkInstance) {
 	vkb::Result<vkb::PhysicalDevice> physicalDeviceResult = vkb::PhysicalDeviceSelector(vkInstance)
 		.select_first_device_unconditionally(true)
 		.defer_surface_initialization()

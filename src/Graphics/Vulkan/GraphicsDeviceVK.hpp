@@ -14,7 +14,7 @@ protected:
 
 	GraphicsDeviceVK() = default;
 
-	static GraphicsDeviceVK* Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK const* graphicsAdapter);
+	static GraphicsDeviceVK* Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK* const graphicsAdapter);
 
 public:
 	~GraphicsDeviceVK() { vkDestroyDevice(_vkDevice, nullptr); }

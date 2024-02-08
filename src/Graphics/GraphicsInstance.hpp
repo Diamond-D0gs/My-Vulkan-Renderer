@@ -6,6 +6,6 @@
 
 class GraphicsInstance : public GraphicsInstanceVK {
 public:
-    const GraphicsInstance* CreateGraphicsInstance() { return static_cast<const GraphicsInstance*>(GraphicsInstanceVK::CreateGraphicsInstance()); }
-    const GraphicsDevice* CreateGraphicsDevice(const GraphicsAdapter* const graphicsAdapter) { return static_cast<const GraphicsDevice*>(GraphicsInstanceVK::CreateGraphicsDevice(graphicsAdapter)); }
+    static const GraphicsInstance* CreateGraphicsInstance() { return static_cast<const GraphicsInstance*>(GraphicsInstanceVK::CreateGraphicsInstance()); }
+    const GraphicsDevice* CreateGraphicsDevice(const GraphicsAdapter* const graphicsAdapter) const { return static_cast<const GraphicsDevice*>(GraphicsInstanceVK::CreateGraphicsDevice(graphicsAdapter)); }
 };

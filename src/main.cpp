@@ -2,7 +2,7 @@
 #include <exception>
 #include <vector>
 
-#include "GraphicsInstance.hpp"
+#include "Graphics/GraphicsInstance.hpp"
 
 int main(void) {
     auto graphicsInstance = GraphicsInstance::CreateGraphicsInstance();

@@ -21,5 +21,5 @@ public:
 
 	static const GraphicsInstanceVK* CreateGraphicsInstance();
 
-	const GraphicsDeviceVK* CreateGraphicsDevice(const GraphicsAdapter const* graphicsAdapter) const { return GraphicsDeviceVK::Create(_vkInstance, graphicsAdapter); }
+	const GraphicsDeviceVK* CreateGraphicsDevice(const GraphicsAdapter* const graphicsAdapter) const { return GraphicsDeviceVK::Create(_vkInstance, graphicsAdapter); }
 };

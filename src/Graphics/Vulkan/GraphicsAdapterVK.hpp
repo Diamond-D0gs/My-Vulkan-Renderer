@@ -17,7 +17,7 @@ protected:
 
 	GraphicsAdapterVK() = default;
 
-	static const GraphicsAdapterVK* Create(const vkb::Instance& vkInstance);
+	static GraphicsAdapterVK* Create(const vkb::Instance& vkInstance);
 
 public:
 	~GraphicsAdapterVK() = default;
