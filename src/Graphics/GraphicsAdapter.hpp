@@ -2,13 +2,21 @@
 
 #include "Vulkan/GraphicsAdapterVK.hpp"
 
-class GraphicsInstance;
+namespace Oak::Graphics {
+    class Instance;
 
-class GraphicsAdapter : public GraphicsAdapterVK {
-private:
-    GraphicsAdapter() = default;
-    ~GraphicsAdapter() = default;
+    class Adapter {
+    protected:
+        Adapter() = default;
 
-public:
-    friend GraphicsInstance;
-};
+    public:
+        struct Info {
+            std::u8string _name;
+            uint64_t _vram;
+        } _info;
+
+        virtual ~Adapter() = default;
+
+        friend Instance;
+    };
+}

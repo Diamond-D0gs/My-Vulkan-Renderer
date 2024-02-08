@@ -1,7 +1,6 @@
 #pragma once
 
-#include "../Base/GraphicsInstanceBase.hpp"
-#include "../GraphicsAdapter.hpp"
+#include "../GraphicsInstance.hpp"
 #include "GraphicsAdapterVK.hpp"
 #include "GraphicsDeviceVK.hpp"
 
@@ -10,16 +9,20 @@
 
 #define REQUIRED_VK_VERSION VK_MAKE_API_VERSION(0, 1, 2, 0)
 
-class GraphicsInstanceVK : public GraphicsInstanceBase {
-private:
-	vkb::Instance _vkInstance;
+namespace Oak::Graphics::VK {
+	class Instance : public Graphics::Instance {
+	private:
+		vkb::Instance _vkInstance;
 
-	GraphicsInstanceVK() = default;
+		Instance() = default;
 
-public:
-	~GraphicsInstanceVK() { vkb::destroy_instance(_vkInstance); }
+	public:
+		~Instance() { vkb::destroy_instance(_vkInstance); }
 
-	static const GraphicsInstanceVK* CreateGraphicsInstance();
+		static const Instance* CreateGraphicsInstance();
 
-	const GraphicsDeviceVK* CreateGraphicsDevice(const GraphicsAdapter* const graphicsAdapter) const { return GraphicsDeviceVK::Create(_vkInstance, graphicsAdapter); }
-};
+		const Device* CreateGraphicsDevice(const Adapter* const graphicsAdapter) const { 
+			return Device::Create(_vkInstance, graphicsAdapter); 
+		}
+	};
+}

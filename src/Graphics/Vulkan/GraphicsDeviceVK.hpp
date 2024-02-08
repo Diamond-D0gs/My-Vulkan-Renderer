@@ -1,23 +1,25 @@
 #pragma once
 
-#include "../Base/GraphicsDeviceBase.hpp"
+#include "../GraphicsDevice.hpp"
 #include "GraphicsAdapterVK.hpp"
 
 #include <volk.h>
 #include <VkBootstrap.h>
 
-class GraphicsInstanceVK;
+namespace Oak::Graphics::VK {
+	class Instance;
 
-class GraphicsDeviceVK : public GraphicsDeviceBase {
-protected:
-	VkDevice _vkDevice;
+	class Device : public Graphics::Device {
+	protected:
+		VkDevice _vkDevice;
 
-	GraphicsDeviceVK() = default;
+		Device() = default;
 
-	static GraphicsDeviceVK* Create(const vkb::Instance& vkInstance, const GraphicsAdapterVK* const graphicsAdapter);
+		static Device* Create(const vkb::Instance& vkInstance, const Adapter* const graphicsAdapter);
 
-public:
-	~GraphicsDeviceVK() { vkDestroyDevice(_vkDevice, nullptr); }
+	public:
+		~Device() { vkDestroyDevice(_vkDevice, nullptr); }
 
-	friend GraphicsInstanceVK;
-};
+		friend Instance;
+	};
+}

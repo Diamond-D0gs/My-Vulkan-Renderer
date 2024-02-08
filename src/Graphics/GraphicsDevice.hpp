@@ -2,7 +2,16 @@
 
 #include "Vulkan/GraphicsDeviceVK.hpp"
 
-class GraphicsDevice : public GraphicsDeviceVK {
-public:
+namespace Oak::Graphics {
+    class Instance;
     
-};
+    class Device {
+    protected:
+        Device() = default;
+
+    public:
+        virtual ~Device() = default;
+
+        friend Instance;
+    };
+}

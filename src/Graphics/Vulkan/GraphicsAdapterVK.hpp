@@ -1,32 +1,50 @@
 #pragma once
 
-#include "../Base/GraphicsAdapterBase.hpp"
+#include "../GraphicsAdapter.hpp"
 
 #include <volk.h>
 #include <VkBootstrap.h>
 
-#include <string>
-#include <cstdint>
+#include <vector>
 
-class GraphicsInstanceVK;
-class GraphicsDeviceVK;
+namespace Oak::Graphics::VK {
+	class Instance;
+	class Device;
 
-class GraphicsAdapterVK : public GraphicsAdapterBase {
-protected:
-	VkPhysicalDevice _vkPhysicalDevice;
+	class Adapter : public Graphics::Adapter {
+	protected:
+		struct OptionalFeatures {
+			bool _meshShading : 1;
+			bool _rayTracing : 1;
+		} _optionalFeatures;
 
-	GraphicsAdapterVK() = default;
+		struct QueueIndices {
+			int32_t _graphics;
+			int32_t _transfer;
+			int32_t _compute;
+		} _queueIndices;
 
-	static GraphicsAdapterVK* Create(const vkb::Instance& vkInstance);
+		struct MemoryProperties {
+			struct MemoryEntry {
+				int32_t _heapIndex;
+				uint64_t _heapSize;
+			} _local, _assetStaging, _cpuUpload;
+		} _memoryProperties;
 
-public:
-	~GraphicsAdapterVK() = default;
+		VkPhysicalDevice _vkPhysicalDevice;
 
-	struct GraphicsAdapterInfo {
-		std::u8string _name;
-		uint64_t _vram;
-	} _info;
+		Adapter() = default;
 
-	friend GraphicsInstanceVK;
-	friend GraphicsDeviceVK;
-};
+		const std::vector<VkDeviceQueueCreateInfo> CreateDeviceQueueCreateInfos() const;
+
+		VkPhysicalDeviceFeatures2 CreateExtensionNamesAndFeatureStructs(std::vector<const char*>& extensionNamesOut, std::vector<std::unique_ptr<VkBaseOutStructure>> featureStructsOut) const;
+
+		static Adapter* Create(const vkb::Instance& vkInstance);
+
+	public:
+		~Adapter() = default;
+
+		friend Instance;
+		friend Device;
+	};
+}
