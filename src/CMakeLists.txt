@@ -1,8 +1,5 @@
 add_executable(${EXECUTABLE_NAME}
     main.cpp
-    Graphics/GraphicsAdapter.hpp
-    Graphics/GraphicsDevice.hpp
-    Graphics/GraphicsInstance.hpp
     Graphics/Base/GraphicsAdapterBase.hpp
     Graphics/Base/GraphicsDeviceBase.hpp
     Graphics/Base/GraphicsInstanceBase.hpp
@@ -13,6 +10,9 @@ add_executable(${EXECUTABLE_NAME}
     Graphics/Vulkan/GraphicsDeviceVK.cpp
     Graphics/Vulkan/GraphicsInstanceVK.hpp
     Graphics/Vulkan/GraphicsInstanceVK.cpp
+    Graphics/GraphicsAdapter.hpp
+    Graphics/GraphicsDevice.hpp
+    Graphics/GraphicsInstance.hpp
 )
 
 target_link_libraries(
